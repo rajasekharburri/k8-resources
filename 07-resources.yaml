@@ -10,7 +10,9 @@ spec:
       # soft limit
       requests:
         memory: "68Mi"
-        cpu: "100m" # 1/10th of cpu
+        cpu: "100m" 
+         # m = millicpu . 1000m = 1 CPU 
+         # core# 1/10th of cpu
        # provide equal or more than requests
       # hard limit
       limits:
