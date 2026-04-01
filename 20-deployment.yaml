@@ -1,3 +1,12 @@
+#Deployment:- used to handle the application deployments through image, by default rolling update deployment will work there
+
+#1.Stop the server
+#2.Remove old code
+#3.Download the new code
+#4.Restart the server
+
+### pod <replicaset< Deployment
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:

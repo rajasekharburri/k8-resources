@@ -1,3 +1,11 @@
+#replica means similar
+#set means multiple 
+#replicaset means multple sets(to create multiple pods)
+
+
+# Replicaset --> creates desired number of pod replicas based on selectors
+
+
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
@@ -22,4 +30,4 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:trixie-perl
+        image: nginx
