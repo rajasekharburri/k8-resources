@@ -55,24 +55,35 @@
 -   Stable identity
 -   Persistent storage
 
-## Persistent Storage
+## permanent volumes
+1. networking
+2. storage
+3. programming
+4. os
 
-### EBS
 
--   Fast
--   Single instance
--   Used for DB/OS
+## Persistent Storage(permanent)
 
-### EFS
+### HD (EBS) -Elastic Block Storage
 
--   Shared storage
--   Slower
--   Used for files
+- should be as near as possible to computer
+- data trasfer is very fast
+- can connect to only computer at a time
+- databases and OS should be in EBS
+
+
+### Drive(NFS) EFS(Elastic file storage)
+- should be anywhere in the network
+- data transfer is slow compared to EBS
+- can be used in multiple systems at a time
+- databases and os can't be used in EFS
+- you can keep files in EFS
 
 ## Provisioning
 
--   Static: Manual
--   Dynamic: Automatic via StorageClass
+-   Static: manually creating disks
+-   Dynamic: pods can create disks dynamically whenever required
+
 
 ## Kubernetes Objects
 
