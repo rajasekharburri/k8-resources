@@ -84,6 +84,12 @@
 -   Static: manually creating disks
 -   Dynamic: pods can create disks dynamically whenever required
 
+| Feature  | EBS             | EFS                |
+| -------- | --------------- | ------------------ |
+| Type     | Block storage   | File storage       |
+| Speed    | Fast            | Slower             |
+| Attach   | Single instance | Multiple instances |
+| Use case | DB, OS          | Shared files       |
 
 ## Kubernetes Objects
 
