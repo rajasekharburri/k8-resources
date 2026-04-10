@@ -1,3 +1,7 @@
+ #emptyDir -> this is the default storage allocated in the host until pod lives. 
+ #            when you have multiple containers in a pod that should have access to same storage.
+
+
 apiVersion: v1
 kind: Pod
 metadata:
