@@ -73,7 +73,7 @@ It is a temporary storage space created automatically when a Pod starts running 
 
 ## Persistent Storage(permanent)
 
-### HD (EBS) -Elastic Block Storage
+### (EBS) -Elastic Block Storage-(Hardisk)
 
 - should be as near as possible to computer
 - data trasfer is very fast
@@ -81,15 +81,35 @@ It is a temporary storage space created automatically when a Pod starts running 
 - databases and OS should be in EBS
 
 
-### Drive(NFS) EFS(Elastic file storage)
+### EFS(Elastic file storage)--(Google Drive(NFS))
 - should be anywhere in the network
 - data transfer is slow compared to EBS
 - can be used in multiple systems at a time
 - databases and os can't be used in EFS
 - you can keep files in EFS
 
-## Provisioning
+## EBS vs EFS
 
+1. EBS should in the same az as server, EFS can be anywhere in network
+2. EBS only accessed one server at a time, EFS can be accessed by multiple servers
+3. EBS is faster than EFS
+4. EBS is for OS and DB, EFS can be used to store objects or files
+5. EBS size is fixed, EFS is elastic size can go upto PB
+6. We can select fs type in EBS, but EFS has fixed type called NFS
+7. EBS not required SG, for EFS we should attach SG. 2049 is port number for NFS
+
+EFS
+====
+1. create the disk
+3. install the EFS drivers
+4. EC2 nodes should have IAM role access to mount EFS volumes
+5. allow 2049 in EFS SG from EC2 SG
+
+kubectl kustomize \
+    "github.com/kubernetes-sigs/aws-efs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-2.1" > public-ecr-driver.yaml
+
+
+## Provisioning
 -   Static: manually creating disks
 -   Dynamic: pods can create disks dynamically whenever required
 
@@ -115,10 +135,12 @@ It is a temporary storage space created automatically when a Pod starts running 
 -   Defines storage type
 
 ## Analogy
+Son -> Mother -> Father -> Wallet
+Pod -> PVC    ->  PV     -> Disk
 
-Pod → PVC → PV → Disk Son → Mother → Father → Wallet
 
-Dynamic: Pod → PVC → StorageClass → Disk Son → Mother → PhonePe
+Son -> Mother -> Phonepe
+Pod -> PVC -> Disk(Create and Mount)
 
 ## Admin Tasks
 
